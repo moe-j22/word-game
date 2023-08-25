@@ -1,45 +1,52 @@
-//A game that starts on a "Start" button click - Brian
-//The game is a user guessing letters of a word until the word is complete
-//The game is timed - Steve
-//the game is won when all letters are guessed
-//the game is lost when time runs out and blank letters still remain
-//the total wins and losses should display on the screen - Nate
+//a start button that begins the game
+//letters must match the number of blanks
+//game is timed
+//user wins when all letters of the word has been guessed
+//user loses when the timer runs ous 
+//total wins and loses show on screen
 
-//We accomplish this by:
-    //when a user presses a key the useers guess is captured as a key event
-    //when the user presses a correct key it fills in the word
-    //when user wins or loses a message appears and timer stops
-    //when start button is clicked timer resets
-    //data should persist across refreshes and returns
+//when letter is clicked, letter is captured as a key event
+//when letter matches blank, blank should be replaced with letter.
+//when game is over, message should appear and timer should end
+//when user clicks start, timer should reset
+//when user refreshes, win and loss counts should persists. 
 
-
-
-//timer option 1
+var resetButton = document.querySelector(".reset-button")
 let timer;
-let timeLeft = 10; //seconds
+let timeLeft = 10; 
+
+function beginGame() {
+  let startButton = document.createElement("button");
+  startButton.textContent = "Start"
+  document.body.appendChild(startButton);
+}
+
+function resetGame() {
+  winCount = 0;
+  lossCount = 0;
+
+  gamesWon()
+  gamesLost()
+}
 
 function gameOver() {
-    cancelInterval(timer);
-    $('playAgainButton').show();
+  cancelInterval(timer);
+  $('playAgainButton').show();
 }
 
 function updateTimer() {
-    timeLeft = timeLeft - 1;
-    if (timeLeft >= 0)
-        $('timer').html(timeleft);
-    else{
-        gameOver();
-    }
+  timeLeft = timeLeft - 1;
+  if (timeLeft >= 0)
+  $('timer').html(timeleft);
+  else{
+    gameOver();
+  }
 }
 
 function start() {
-    timer = setInterval(updateTimer, 1000);
-    updateTimer();
-    $('#playAgainButton').hide();
+  timer = setInterval(updateTimer, 1000);
+  updateTimer();
+  $('#playAgainButton').hide();
 }
-//end timer option 1
 
-
-//timer option 2
-
-//end timer option 2
+resetButton.addEventListener("click", resetGame)
