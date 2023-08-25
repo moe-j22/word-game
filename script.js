@@ -43,3 +43,13 @@ function start() {
 //timer option 2
 
 //end timer option 2
+
+
+
+//Display Win / Loss count
+
+
+function showWins() {
+    localStorage.getItem("winCount", wins)
+    winCounter.textContent = wins
+    }
