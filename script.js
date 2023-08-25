@@ -11,16 +11,15 @@
 //when user clicks start, timer should reset
 //when user refreshes, win and loss counts should persists. 
 
+var resetButton = document.querySelector(".reset-button")
+let timer;
+let timeLeft = 10; 
 
 function beginGame() {
   let startButton = document.createElement("button");
   startButton.textContent = "Start"
   document.body.appendChild(startButton);
 }
-
-
-
-var resetButton = document.querySelector(".reset-button")
 
 function resetGame() {
   winCount = 0;
@@ -29,4 +28,25 @@ function resetGame() {
   gamesWon()
   gamesLost()
 }
+
+function gameOver() {
+  cancelInterval(timer);
+  $('playAgainButton').show();
+}
+
+function updateTimer() {
+  timeLeft = timeLeft - 1;
+  if (timeLeft >= 0)
+  $('timer').html(timeleft);
+  else{
+    gameOver();
+  }
+}
+
+function start() {
+  timer = setInterval(updateTimer, 1000);
+  updateTimer();
+  $('#playAgainButton').hide();
+}
+
 resetButton.addEventListener("click", resetGame)
