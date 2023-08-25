@@ -18,6 +18,8 @@ function beginGame() {
   document.body.appendChild(startButton);
 }
 
+
+
 var resetButton = document.querySelector(".reset-button")
 
 function resetGame() {
