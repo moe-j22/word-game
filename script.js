@@ -17,6 +17,10 @@
 //timer option 1
 let timer;
 let timeLeft = 10; //seconds
+// moes changes
+const words = ["programming", "javaScript", "HTML", "css", "computer"]; // words to be guessed
+let currentWordIndex = 0;
+let guessedLetters = []; // :)
 
 function gameOver() {
     cancelInterval(timer);
